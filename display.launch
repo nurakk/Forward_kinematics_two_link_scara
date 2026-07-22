@@ -1,0 +1,28 @@
+<launch>
+
+    <!-- Load URDF -->
+    <param name="robot_description"
+           textfile="$(find scara)/urdf/scara.urdf"/>
+
+    <!-- Joint State Publisher GUI -->
+    <node pkg="joint_state_publisher_gui"
+          type="joint_state_publisher_gui"
+          name="joint_state_publisher_gui"/>
+
+    <!-- Robot State Publisher -->
+    <node pkg="robot_state_publisher"
+          type="robot_state_publisher"
+          name="robot_state_publisher"/>
+
+    <!-- Forward Kinematics Node -->
+    <node pkg="scara"
+          type="forward_kinematics.py"
+          name="forward_kinematics"
+          output="screen"/>
+
+    <!-- RViz -->
+    <node pkg="rviz"
+          type="rviz"
+          name="rviz"/>
+
+</launch>
